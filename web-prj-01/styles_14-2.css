@@ -1,0 +1,22 @@
+.container {
+    background-color: rgb(208, 208, 208);
+    width: 75%;
+    position: absolute;
+    left: 12.5%;
+}
+
+.slider {
+    width: 256px;
+    height: 256px;
+    border: 3px solid black;
+    margin: 30px auto;
+}
+
+.slider-line {
+    height: 256px;
+    width: 1024px;
+    background-color: orangered;
+    display: flex;
+    position: relative;
+    left:0px;
+}

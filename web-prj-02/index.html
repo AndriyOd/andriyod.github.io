@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <link rel="stylesheet" href="styles_15-2.css">
+    <!-- <script src="script15-1.js"></script> -->
+    <title>JS learning</title>
+</head>
+
+<body>
+    <div class="wrapper1">
+        <p id="title1"><b>Определение координат</b></p>
+        <p class="par" id="LatPar">Широта: </p>
+        <p class="par" id="LongPar">Долгота: </p>
+        <div>
+            <p>
+                <button id="GetCoordBtn" onclick="GetCoordFunction()">Определить координаты</button>
+            </p>
+            <!-- <p>
+                <button id="CopyBtn" onclick="CopyFunction()">Скопировать в буфер</button>
+            </p> -->
+            <p id="CoordMsg">
+                <!-- To be filled by Javascript -->
+            </p>
+            <p id="StatusMsg">
+                <!-- To be filled by Javascript -->
+            </p>
+
+        </div>
+    </div>
+    <script>
+        let x = document.getElementById('LatPar');
+        let y = document.getElementById('LongPar');
+        let CoordMsg = document.getElementById('CoordMsg');
+        let StatMsg = document.getElementById('StatusMsg');
+        let counter = 1;
+        let latitude = 0;
+        let longitude = 0;
+
+        function GetCoordFunction() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showposition);
+                // x.append('show');
+                // y.append('show');
+            }
+            else {
+                x.append('does supported by yor browser');
+                y.append('does supported by yor browser');
+            }
+        }
+
+        function showposition(position) {
+            // x.append('show');
+            // y.append('show');
+            latitude = position.coords.latitude;
+            longitude = position.coords.longitude;
+
+            x.append(latitude);
+            y.append(longitude);
+            let str = latitude + ', ' + longitude;
+            CoordMsg.innerText = str;
+            StatMsg.innerText = "Координаты скопированы в буфер обмена. Теперь их можно отправить, перейдя, например, в Viber и нажав Вставить.";
+
+            str.select();
+            document.execCommand("copy");  
+            
+            // Copy to clipboard. Old style
+            // var textarea = document.createElement("textarea");
+            // textarea.textContent = str;
+            // document.body.appendChild(textarea);
+            // textarea.select();
+            // document.execCommand("copy");
+            // document.body.removeChild(textarea);
+
+            // Copy to clipboard. New modern Clipboard API style
+            // navigator.clipboard.writeText(str);
+
+        }
+    </script>
+</body>
+
+</html>
