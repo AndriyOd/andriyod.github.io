@@ -2,9 +2,6 @@
 let numOfImages = 17; // number of images in slider
 Init();
 
-// let nextImage = 5;
-// let prevImage = 16;
-
 let dots = document.querySelectorAll(`.dot`);
 let activeDot = 2;
 dots[activeDot].classList.add('dot-active');
@@ -33,19 +30,6 @@ function Init() {
     }
 }
 
-// document.querySelector('#slider-dots-container').addEventListener('click', dotActivate);
-
-// function dotActivate(event) {
-//     console.log(event);
-//     let dots = document.querySelectorAll(`.dot`);
-//     dots.forEach(item => {
-//         item.classList.remove('dot-active');
-//     })
-
-//     let target = event.target;
-//     if (target.tagName == 'P')
-//     target.classList.add('dot-active');
-// }
 
 // Next-button click-fucntion
 document.querySelector('#next').onclick = function () {
@@ -63,18 +47,6 @@ document.querySelector('#next').onclick = function () {
         slides[i] = document.querySelector(`.slide-${i}`);
     }
 
-    // let slides = document.querySelectorAll('.slide-container');
-    // console.log(slides);
-
-    // // Delete ".slide-null" item
-    // slides.forEach((item, index, array) => {
-    //     if (item.classList.contains("slide-null")) {
-    //         array.shift();
-    //         console.log("TRUE");
-    //         console.log(array.length);
-    //     }
-    // });
-
 
     //Slides classes reassign for moving
     slides.forEach((item, index, array) => {
@@ -84,30 +56,9 @@ document.querySelector('#next').onclick = function () {
             item.classList.add(`slide-${array.length - 1}`);
             let nextIm = nextImage(activeDot, numOfImages);
             item.src = `./images/im-${nextIm}.jpg`;
-            // // Image assing to the right (5th) slide
-            // if (nextImage < imNum) {
-            //     item.src = `./images/im-${nextImage}.jpg`;
-            // }
-            // else {
-            //     nextImage = 0;
-            //     item.src = `./images/im-${nextImage}.jpg`;
-            // }
-            // nextImage++;
-
-            // Image assing to the right (5th) slide
-            //     if (nextImage < imNum) {
-            //         item.src = `./images/im-${nextImage}.jpg`;
-            //     }
-            //     else {
-            //         nextImage = 0;
-            //         item.src = `./images/im-${nextImage}.jpg`;
-            //     }
-            //     nextImage++;
         }
         else
             item.classList.add(`slide-${index - 1}`);
-
-        // console.log(nextImage);
     });
 
 
@@ -140,15 +91,6 @@ document.querySelector('#prev').onclick = function () {
             item.classList.add(`slide-0`);
             let prevIm = prevImage(activeDot, numOfImages);
             item.src = `./images/im-${prevIm}.jpg`;
-            //     // Image assing to the left (0th) slide
-            //     if (prevImage == 0) {
-            //         prevImage = array.length-1;
-            //         item.src = `./images/im-${prevImage}.jpg`;
-            //     }
-            //     else {
-            //         item.src = `./images/im-${prevImage}.jpg`;
-            //     }
-            //     prevImage--;
         }
         else
             item.classList.add(`slide-${index + 1}`);
