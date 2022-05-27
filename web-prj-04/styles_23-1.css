@@ -1,0 +1,123 @@
+:root {
+    --numOfColumns: 4;
+}
+
+.section-border-line {
+    width: 97vw;
+    height: 1vw;
+    border-top: 1px solid gray;
+    margin: 0px auto;
+}
+
+.section-header > * {
+    margin:0px;
+}
+
+#grid-container {
+    width: 90vw;
+    margin: 4vh auto 8vh auto;
+    display: grid;
+    /* grid-template-columns: repeat(var(--numOfColumns), 1fr); */
+    /* grid-template-columns: repeat(auto-fill, min(256px)); */
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    /* grid-auto-columns: 23%; */
+    /* grid-template-columns: min-content; */
+    gap: 30px;
+}
+
+.tile-container {
+    background-color: transparent;
+    perspective: 1000px;
+    transform-style: preserve-3d;
+    aspect-ratio: 1/1;
+
+}
+
+.tile:hover {
+    box-shadow: 0px 20px 20px black;
+    cursor: pointer;
+    transition: all 500ms
+}
+
+.tile {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* overflow: hidden; */
+    transform-style: preserve-3d;
+    /* box-shadow: 0px 10px 10px lightgray; */
+    transition: all 1000ms;
+    /* transform: scale(1);
+    transition: all 1000ms; */
+
+}
+
+.tile-frontside,
+.tile-backside {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border: 1px solid grey;
+    /* overflow: hidden; */
+}
+
+
+.tile-frontside > img {
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    /* transform: scale(1); */
+    /*transition: all 1000ms;*/
+
+}
+
+.front-item-title {
+    /*border: inherit;*/
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    /* padding: 1rem; */
+    padding: 0;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: antiquewhite;
+    transform-style: preserve-3d;
+    border-top: 1px solid grey;
+    font-weight: bold;
+}
+
+.tile-backside {
+    background-color: antiquewhite;
+    transform: rotateY(180deg);
+}
+
+.front-item-title > p {
+    margin: 0;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.tile-backside > div {
+    position: absolute;
+    /* background-color: red; */
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    color: dodgerblue;
+    transform-style: preserve-3d;
+    transform: translate(-50%, -50%) translateZ(100px);
+    /* transform: rotateY(180deg) translateZ(100px); */
+}
+
+.tile-rotated {
+    transform: rotateY(180deg);
+    transition: all 1000ms;
+}
