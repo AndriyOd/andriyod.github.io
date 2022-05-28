@@ -27,7 +27,7 @@
 }
 
 .tile:hover {
-    box-shadow: 0px 20px 20px black;
+    box-shadow: 0px 30px 30px black;
     cursor: pointer;
     transition: all 500ms
 }
@@ -41,6 +41,7 @@
     align-items: center;
     /* overflow: hidden; */
     transform-style: preserve-3d;
+    box-shadow: 0px 20px 20px lightgray;
     transition: all 2000ms;
 }
 
