@@ -2,9 +2,9 @@ GridClickHandler();
 
 // console.log('item.children');
 let tilesFrontSideCollection = document.querySelectorAll('.tile-frontside');
-tilesFrontSideCollection.forEach((item, index, array)=>{
-    item.addEventListener('mouseenter', (e)=> {
-        console.log(e);
+tilesFrontSideCollection.forEach((item, index, array) => {
+    item.addEventListener('mouseenter', (e) => {
+        // console.log(e);
         let upperImg = item.children[1];
         upperImg.classList.add('colorized');
         let title = item.children[2];
@@ -35,7 +35,17 @@ function GridClickHandler() {
     tiles.forEach((item, index, array) => {
         // console.log(item);
         item.addEventListener('click', () => {
-            item.classList.toggle('tile-rotated')
+            item.classList.toggle('tile-rotated');
+            AutoRotate(item);
         });
     });
+}
+
+function AutoRotate(element) {
+    // console.log(element);
+    // element.classList.remove('tile-rotated');
+    setTimeout(() => {
+        // console.log(element);
+        element.classList.remove('tile-rotated');
+    }, 3000);
 }

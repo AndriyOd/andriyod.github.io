@@ -139,4 +139,7 @@
     #grid-container {
         --numOfColumns: 1;
     }
+    #grid-container img:nth-child(2) {
+        clip-path: circle(100% at 25% 25%);
+    } 
 }
