@@ -10,25 +10,6 @@ plusBtn.addEventListener('click', RowAdd);
 let minusBtn = document.querySelector('#minus');
 minusBtn.addEventListener('click', RowDelete);
 
-// let refreshBtn = document.querySelector('#refresh-btn');
-// refreshBtn.addEventListener('click', CreateSecondCell);
-
-// let select = document.querySelector('#select-1');
-// select.onchange = (()=>{console.log('Select element has just changed')});
-
-// let checkbtn = document.querySelector('#check1-btn');
-// checkbtn.addEventListener('click', () => {
-    // let selectElemsFromFirstColumn = document.querySelectorAll('#tbody > tr > td:first-child > select');
-    // console.log(selectElemsFromFirstColumn);
-    // console.log('---------');
-    // selectElemsFromFirstColumn.forEach((item) => { console.log(item.value) });
-// });
-
-
-
-
-
-
 
 
 function RowAdd() {
@@ -38,7 +19,7 @@ function RowAdd() {
     let rColumnArr = [];
     rColumnArr[0] = "";
     rColumnArr[1] = "";
-    rColumnArr[2] = "CheckBox";
+    rColumnArr[2] = "";
     rColumnArr[3] = 0;
 
     let tr = document.createElement('tr');
@@ -56,19 +37,25 @@ function RowAdd() {
     // Put Select Item into the First Cell in a Row
     CreateFirstCell();
 
-    // Create Second Cell (with Option content) in a Row
+    // Create Second Cell in a Row (with Option content) 
     let rows = document.querySelectorAll('#tbody > tr');
     CreateSecondCell(rows.length);
 
+    // Create Third Cell in a Row (with CheckBox)
+    CreateThirdCell(rows.length);
+
+    // Update Collection of Select-Items from the First Column
     gSelectElemsFromFirstColumn = document.querySelectorAll('#tbody > tr > td:first-child > select');
     gSelectElemsFromFirstColumn.forEach((item) => {
         item.addEventListener('change', (event)=> {
             let changedSelItemNum = event.target.getAttribute('index');
             //console.log(changedSelItemNum);
             CreateSecondCell(changedSelItemNum);
+            CreateThirdCell(changedSelItemNum);
         });
     });
 }
+
 
 
 function RowDelete() {
@@ -76,9 +63,12 @@ function RowDelete() {
     if (tbody.lastElementChild) tbody.removeChild(tbody.lastElementChild);
     TotalCalc();
 
+    // Update Collection of Select-Items from the First Column
     gSelectElemsFromFirstColumn = document.querySelectorAll('#tbody > tr > td:first-child > select');
-    console.log(gSelectElemsFromFirstColumn);
+    // console.log(gSelectElemsFromFirstColumn);
 }
+
+
 
 function TotalCalc() {
     let totalSum = 0;
@@ -93,6 +83,7 @@ function TotalCalc() {
 
     cellTotal.textContent = totalSum;
 }
+
 
 
 function CreateFirstCell() {
@@ -121,6 +112,7 @@ function CreateFirstCell() {
     // console.log(firstCell);
     firstCell.appendChild(droplist);
 }
+
 
 
 function CreateSecondCell(num) {
@@ -210,4 +202,48 @@ function CreateSecondCell(num) {
 
     // console.log(firstCell);
     secondCell.appendChild(droplist);
+}
+
+
+
+function CreateThirdCell(num) {
+    let qfirstSel = `#tbody > tr:nth-child(${num}) > td:first-child`;
+    let firstCell = document.querySelector(qfirstSel);
+
+    let qthirdSel = `#tbody > tr:nth-child(${num}) > td:nth-child(3)`;
+    let thirdCell = document.querySelector(qthirdSel);
+
+    while (thirdCell.firstElementChild) {
+        thirdCell.removeChild(thirdCell.firstElementChild);
+        thirdCell.textContent = "";
+    }
+
+    let checkbox = document.createElement("input");
+    checkbox.setAttribute("type", "checkbox");
+
+    switch (firstCell.firstChild.value) {
+        default:
+        case "Poster":
+        case "Flyer":
+        case "Packaging":
+        case "Menu":
+        case "Invitation Card":
+            thirdCell.append(checkbox);
+            thirdCell.append(" PSD");
+            break;
+
+        case "Business Card":
+        case "Infographic":
+        case "Logo":
+            thirdCell.append(checkbox);
+            thirdCell.append(" SVG");           
+    }
+    // thirdCell.textContent = "";   
+    // while (thirdCell.firstElementChild) {
+    //     thirdCell.removeChild(thirdCell.firstElementChild);
+    //     thirdCell.textContent = "";
+    // }
+
+    // let checkbox = document.createElement("input");
+    // checkbox.setAttribute("type", "checkbox");
 }
