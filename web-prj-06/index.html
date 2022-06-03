@@ -14,17 +14,15 @@
     <div class="section-border-line"></div>
     <div class="section-header">
         <h1>Price Calculator</h1>
-        <!-- <p>Data is obtained via "Openweathermap.org" API service</p> -->
     </div>
     <div id="table-container">
-        <!-- <img src="./img/calculator128.png" alt="calc"> -->
         <table id="table">
             <thead id="thead">
                 <tr>
                     <th><img src="./img/calculator32.png" alt="calc">Type of design</td>
                     <th>Parameters</td>
                     <th>Source file</td>
-                    <th>Price</td>
+                    <th>Price, &#8364</td>
                 </tr>
             </thead>
             <tbody id="tbody">
@@ -35,23 +33,28 @@
                     <td>
                         <div id="plus">+</div>
                         <div id="minus">&#8211</div>
-                        <!-- <button id="refresh-btn">Refresh</button>
-                        <button id="check1-btn">Check</button> -->
                     </td>
                     <td></td>
-                    <td style="text-align:right">Total:</td>
+                    <td style="text-align:right">Total price:</td>
                     <td><b>0</b></td>
                 </tr>
             </tfoot>
         </table>
     </div>
     <div class="section-border-line"></div>
-    <!-- <select name="Select-1" id="select-1">
-        <option value="opt-1">Option 1</option>
-        <option value="opt-2">Option 2</option>
-        <option value="opt-3">Option 3</option>
-        <option value="opt-4">Option 4</option>
-    </select> -->
+    <div id="popup-background"></div>
+    <div id="popup-window">
+        <div id="popup-header">
+            <div id="popup-header-text">Message</div>         
+            <div id="X">&times;</div>
+        </div>
+        <div id="popup-message">
+            <p id="popup-message-text">
+                Let's start with only 10 tasks for the beginning.
+            </p>
+            <p id="ok-btn">OK</p>
+        </div>
+    </div>
 </body>
 
 </html>

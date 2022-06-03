@@ -1,6 +1,6 @@
-// let gCounter = 0;
 let gSelectElemsFromFirstColumn;
-// let gTotalSum = 0;
+let gSelectElemsFromSecondColumn;
+let gSelectElemsFromThirdColumn;
 
 RowAdd();
 
@@ -10,11 +10,27 @@ plusBtn.addEventListener('click', RowAdd);
 let minusBtn = document.querySelector('#minus');
 minusBtn.addEventListener('click', RowDelete);
 
+let popupWindowOK = document.querySelector('#ok-btn');
+let popupWindowX = document.querySelector('#X');
+
+popupWindowOK.addEventListener('click', ClosePopupWindow);
+popupWindowX.addEventListener('click', ClosePopupWindow);
+
+function ClosePopupWindow() {
+    document.querySelector('#popup-background').classList.remove('active');
+    document.querySelector('#popup-window').classList.remove('active');
+}
 
 
 function RowAdd() {
-    //gCounter++;
-    
+    let rows = document.querySelectorAll('#tbody > tr');
+    if (rows.length == 10) {
+        // alert('Number of tasks is 5');
+        document.querySelector('#popup-background').classList.add('active');
+        document.querySelector('#popup-window').classList.add('active');
+        return;
+    }
+
     // Empty Row Building
     let rColumnArr = [];
     rColumnArr[0] = "";
@@ -32,28 +48,29 @@ function RowAdd() {
 
     let tbody = document.querySelector('#tbody');
     tbody.appendChild(tr);
-    // TotalCalc(); 
 
     // Put Select Item into the First Cell in a Row
     CreateFirstCell();
 
     // Create Second Cell in a Row (with Option content) 
-    let rows = document.querySelectorAll('#tbody > tr');
+    // let rows = document.querySelectorAll('#tbody > tr');
+    rows = document.querySelectorAll('#tbody > tr');
     CreateSecondCell(rows.length);
 
     // Create Third Cell in a Row (with CheckBox)
     CreateThirdCell(rows.length);
 
+    // Create Fourth Cell in a Row (with Price Value)
+    CreateFourthCell(rows.length);
+
     // Update Collection of Select-Items from the First Column
-    gSelectElemsFromFirstColumn = document.querySelectorAll('#tbody > tr > td:first-child > select');
-    gSelectElemsFromFirstColumn.forEach((item) => {
-        item.addEventListener('change', (event)=> {
-            let changedSelItemNum = event.target.getAttribute('index');
-            //console.log(changedSelItemNum);
-            CreateSecondCell(changedSelItemNum);
-            CreateThirdCell(changedSelItemNum);
-        });
-    });
+    UpdateFirstColumnListeners();
+
+    // Update Collection of Select-Items from the Second Column
+    UpdateSecondColumnListeners();
+
+    // Update Collection of CheckBox-Items from the Third Column
+    UpdateThirdColumnListeners();
 }
 
 
@@ -62,10 +79,6 @@ function RowDelete() {
     let tbody = document.querySelector('#tbody');
     if (tbody.lastElementChild) tbody.removeChild(tbody.lastElementChild);
     TotalCalc();
-
-    // Update Collection of Select-Items from the First Column
-    gSelectElemsFromFirstColumn = document.querySelectorAll('#tbody > tr > td:first-child > select');
-    // console.log(gSelectElemsFromFirstColumn);
 }
 
 
@@ -81,13 +94,12 @@ function TotalCalc() {
         }
     }
 
-    cellTotal.textContent = totalSum;
+    cellTotal.textContent = totalSum + " \u{20AC}";
 }
 
 
 
 function CreateFirstCell() {
-    // gCounter++;
     let droplist = document.createElement("select");
     let rows = document.querySelectorAll('#tbody > tr');
     droplist.setAttribute("index", rows.length);
@@ -109,16 +121,16 @@ function CreateFirstCell() {
     });
 
     let firstCell = document.querySelector('#tbody > tr:last-child > td:first-child');
-    // console.log(firstCell);
     firstCell.appendChild(droplist);
 }
 
 
 
 function CreateSecondCell(num) {
-    //console.log('CreateSecondCell function');
-    //console.log(num);
+
     let droplist = document.createElement("select");
+
+    droplist.setAttribute("index", num);
 
     let qfirstSel = `#tbody > tr:nth-child(${num}) > td:first-child`;
     let firstCell = document.querySelector(qfirstSel);
@@ -131,9 +143,6 @@ function CreateSecondCell(num) {
     }
 
     let optionArr = [];
-
-    // console.dir(firstCell.firstChild);
-    // console.dir(firstCell.firstChild.value);
 
     switch (firstCell.firstChild.value) {
         default:
@@ -200,8 +209,8 @@ function CreateSecondCell(num) {
         droplist.appendChild(option);
     });
 
-    // console.log(firstCell);
     secondCell.appendChild(droplist);
+    UpdateSecondColumnListeners();
 }
 
 
@@ -220,12 +229,12 @@ function CreateThirdCell(num) {
 
     let checkbox = document.createElement("input");
     checkbox.setAttribute("type", "checkbox");
+    checkbox.setAttribute("index", num);
 
     switch (firstCell.firstChild.value) {
         default:
         case "Poster":
         case "Flyer":
-        case "Packaging":
         case "Menu":
         case "Invitation Card":
             thirdCell.append(checkbox);
@@ -235,15 +244,97 @@ function CreateThirdCell(num) {
         case "Business Card":
         case "Infographic":
         case "Logo":
+        case "Packaging":
             thirdCell.append(checkbox);
-            thirdCell.append(" SVG");           
+            thirdCell.append(" SVG");
     }
-    // thirdCell.textContent = "";   
-    // while (thirdCell.firstElementChild) {
-    //     thirdCell.removeChild(thirdCell.firstElementChild);
-    //     thirdCell.textContent = "";
-    // }
+    UpdateThirdColumnListeners();
+}
 
-    // let checkbox = document.createElement("input");
-    // checkbox.setAttribute("type", "checkbox");
+
+
+function CreateFourthCell(num) {
+    let qfirstSel = `#tbody > tr:nth-child(${num}) > td:first-child > select`;
+    let firstElem = document.querySelector(qfirstSel);
+
+    let qsecondSel = `#tbody > tr:nth-child(${num}) > td:nth-child(2) > select`;
+    let secondElem = document.querySelector(qsecondSel);
+
+    let qthirdSel = `#tbody > tr:nth-child(${num}) > td:nth-child(3) > input`;
+    let thirdElem = document.querySelector(qthirdSel);
+
+    let qfourthSel = `#tbody > tr:nth-child(${num}) > td:nth-child(4)`;
+    let fourthCell = document.querySelector(qfourthSel);
+
+    let basePrice = 0;
+
+    switch (firstElem.value) {
+        default:
+        case "Poster":
+            basePrice = 10;
+            break;
+        case "Business Card":
+            basePrice = 5;
+            break;
+        case "Flyer":
+            basePrice = 5;
+            break;
+        case "Infographic":
+            basePrice = 5;
+            break;
+        case "Logo":
+            basePrice = 5;
+            break;
+        case "Packaging":
+            basePrice = 10;
+            break;
+        case "Menu":
+            basePrice = 5;
+            break;
+        case "Invitation Card":
+            basePrice = 5;
+    }
+
+    let koef_1 = secondElem.selectedIndex / 2 + 1;
+    let koef_2 = 1;
+    if (thirdElem.checked) koef_2 = 1.3;
+    let price = basePrice * koef_1 * koef_2;
+    fourthCell.textContent = price;
+    TotalCalc();
+}
+
+
+
+function UpdateFirstColumnListeners() {
+    gSelectElemsFromFirstColumn = document.querySelectorAll('#tbody > tr > td:first-child > select');
+    gSelectElemsFromFirstColumn.forEach((item) => {
+        item.addEventListener('change', (event) => {
+            let changedSelItemNum = event.target.getAttribute('index');
+            CreateSecondCell(changedSelItemNum);
+            CreateThirdCell(changedSelItemNum);
+            CreateFourthCell(changedSelItemNum);
+        });
+    });
+}
+
+
+function UpdateSecondColumnListeners() {
+    gSelectElemsFromSecondColumn = document.querySelectorAll('#tbody > tr > td:nth-child(2) > select');
+    gSelectElemsFromSecondColumn.forEach((item) => {
+        item.addEventListener('change', (event) => {
+            let changedSelItemNum = event.target.getAttribute('index');
+            CreateFourthCell(changedSelItemNum);
+        });
+    });
+}
+
+
+function UpdateThirdColumnListeners() {
+    gSelectElemsFromThirdColumn = document.querySelectorAll('#tbody > tr > td:nth-child(3) > input');
+    gSelectElemsFromThirdColumn.forEach((item) => {
+        item.addEventListener('change', (event) => {
+            let changedSelItemNum = event.target.getAttribute('index');
+            CreateFourthCell(changedSelItemNum);
+        });
+    });
 }
