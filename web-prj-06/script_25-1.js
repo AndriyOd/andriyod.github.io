@@ -21,6 +21,17 @@ function ClosePopupWindow() {
     document.querySelector('#popup-window').classList.remove('active');
 }
 
+// Test
+// let fourthColumn = document.querySelectorAll('#tbody > tr > td:nth-child(4)');
+// console.log(event);
+// fourthColumn.forEach((item, index) => {
+//     item.addEventListener('change', (event)=> {
+//         console.log(event);
+//     });
+// });
+
+
+
 
 function RowAdd() {
     let rows = document.querySelectorAll('#tbody > tr');
@@ -211,6 +222,10 @@ function CreateSecondCell(num) {
 
     secondCell.appendChild(droplist);
     UpdateSecondColumnListeners();
+    secondCell.classList.add('changed');
+    // console.log('changed');
+    // secondCell.classList.remove('changed');
+    setTimeout(()=>{secondCell.classList.remove('changed');}, 750);
 }
 
 
@@ -317,6 +332,10 @@ function CreateFourthCell(num) {
     let price = basePrice * koef_1 * koef_2;
     fourthCell.textContent = price;
     TotalCalc();
+    fourthCell.classList.add('changed');
+    // console.log('changed');
+    // fourthCell.classList.remove('changed');
+    setTimeout(()=>{fourthCell.classList.remove('changed');}, 750);
 }
 
 

@@ -134,6 +134,25 @@ th > img {
     border-right: 0.05em solid rgba(211, 211, 211, 0.2);
 }
 
+td {
+    /* transform: scale(1); */
+    transition: all 1000ms;
+}
+
+td.changed {
+    /* transform: scale(3); */
+    background-color: rgb(170, 213, 252);
+    transition: all 1000ms;
+}
+
+/* #tbody > tr > td:nth-child(4) {
+    transition: all 1000ms ease-in-out;
+}
+
+#tbody > tr > td:nth-child(4).changed {
+    background-color: rgb(170, 213, 252);
+    transition: all 1000ms ease-in-out;
+} */
 
 
 
