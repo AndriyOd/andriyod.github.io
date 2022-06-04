@@ -24,7 +24,7 @@ function ClosePopupWindow() {
 
 function RowAdd() {
     let rows = document.querySelectorAll('#tbody > tr');
-    if (rows.length == 7) {
+    if (rows.length == 8) {
         // alert('Number of tasks is 5');
         document.querySelector('#popup-background').classList.add('active');
         document.querySelector('#popup-window').classList.add('active');

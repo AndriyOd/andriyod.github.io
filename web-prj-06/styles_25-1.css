@@ -12,19 +12,22 @@ body {
     width: 97vw;
     height: 1vw;
     border-top: 1px solid gray;
-    margin: 0px auto;
+    margin: 20px auto;
 }
 
 .section-header>* {
     margin: 0px;
     text-align: end;
     margin-right: 20px;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
 }
 
 #table-container {
     background-color: var(--backgrndColor);
     border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     /* position: relative; */
 }
 
@@ -32,11 +35,12 @@ table {
     border-collapse: collapse;
     width: 80vw;
     margin: 20px auto;
+    /* padding: 20px; */
 }
 
 th {
     background-color: rgb(229, 229, 229);
-    margin-top: 20px;
+    /* margin-top: 20px; */
 }
 
 /* tr, th, td { padding: 10px; } */
