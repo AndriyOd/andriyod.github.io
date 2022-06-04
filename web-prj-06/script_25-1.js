@@ -252,7 +252,7 @@ function CreateThirdCell(num) {
         case "Menu":
         case "Invitation Card":
             // thirdCell.append(checkbox);
-            checkboxLabel.textContent = " PSD";
+            checkboxLabel.textContent = " .PSD";
             break;
 
         case "Business Card":
@@ -260,7 +260,7 @@ function CreateThirdCell(num) {
         case "Logo":
         case "Packaging":
             // thirdCell.append(checkbox);
-            checkboxLabel.textContent = " SVG";
+            checkboxLabel.textContent = " .SVG";
     }
 
     thirdCell.append(checkboxContainer);
