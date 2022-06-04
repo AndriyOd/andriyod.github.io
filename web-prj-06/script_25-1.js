@@ -24,7 +24,7 @@ function ClosePopupWindow() {
 
 function RowAdd() {
     let rows = document.querySelectorAll('#tbody > tr');
-    if (rows.length == 10) {
+    if (rows.length == 7) {
         // alert('Number of tasks is 5');
         document.querySelector('#popup-background').classList.add('active');
         document.querySelector('#popup-window').classList.add('active');
@@ -222,14 +222,28 @@ function CreateThirdCell(num) {
     let qthirdSel = `#tbody > tr:nth-child(${num}) > td:nth-child(3)`;
     let thirdCell = document.querySelector(qthirdSel);
 
+    // All Cell's Children Deleting
     while (thirdCell.firstElementChild) {
         thirdCell.removeChild(thirdCell.firstElementChild);
         thirdCell.textContent = "";
     }
 
+    // CheckBox container creating with input and label children
+    let checkboxContainer = document.createElement("DIV");
+    checkboxContainer.classList.add('checkbox-container');    
+    
     let checkbox = document.createElement("input");
     checkbox.setAttribute("type", "checkbox");
     checkbox.setAttribute("index", num);
+    let checkboxID = `chb${num}`;
+    checkbox.setAttribute("id", checkboxID);
+
+    let checkboxLabel = document.createElement("LABEL");
+    checkboxLabel.setAttribute("for", checkboxID);
+
+    checkboxContainer.append(checkbox);
+    checkboxContainer.append(checkboxLabel);
+    // CheckBox container created
 
     switch (firstCell.firstChild.value) {
         default:
@@ -237,17 +251,19 @@ function CreateThirdCell(num) {
         case "Flyer":
         case "Menu":
         case "Invitation Card":
-            thirdCell.append(checkbox);
-            thirdCell.append(" PSD");
+            // thirdCell.append(checkbox);
+            checkboxLabel.textContent = " PSD";
             break;
 
         case "Business Card":
         case "Infographic":
         case "Logo":
         case "Packaging":
-            thirdCell.append(checkbox);
-            thirdCell.append(" SVG");
+            // thirdCell.append(checkbox);
+            checkboxLabel.textContent = " SVG";
     }
+
+    thirdCell.append(checkboxContainer);
     UpdateThirdColumnListeners();
 }
 
@@ -260,7 +276,7 @@ function CreateFourthCell(num) {
     let qsecondSel = `#tbody > tr:nth-child(${num}) > td:nth-child(2) > select`;
     let secondElem = document.querySelector(qsecondSel);
 
-    let qthirdSel = `#tbody > tr:nth-child(${num}) > td:nth-child(3) > input`;
+    let qthirdSel = `#tbody > tr:nth-child(${num}) > td:nth-child(3) > div > input`;
     let thirdElem = document.querySelector(qthirdSel);
 
     let qfourthSel = `#tbody > tr:nth-child(${num}) > td:nth-child(4)`;
@@ -330,7 +346,7 @@ function UpdateSecondColumnListeners() {
 
 
 function UpdateThirdColumnListeners() {
-    gSelectElemsFromThirdColumn = document.querySelectorAll('#tbody > tr > td:nth-child(3) > input');
+    gSelectElemsFromThirdColumn = document.querySelectorAll('#tbody > tr > td:nth-child(3) > div > input');
     gSelectElemsFromThirdColumn.forEach((item) => {
         item.addEventListener('change', (event) => {
             let changedSelItemNum = event.target.getAttribute('index');
