@@ -113,11 +113,6 @@ th > img {
     font-size: 0.8rem;
 }
 
-/* th:nth-child(1) {
-    display: flex;
-    justify-content: center;
-} */
-
 #thead > tr > th:nth-child(3)::after {
     content: '\00000a .PSD - bitmap image \00000a .SVG - vector image';
     font-weight: lighter;
@@ -135,26 +130,43 @@ th > img {
 }
 
 td {
-    /* transform: scale(1); */
     transition: all 1000ms;
 }
 
 td.changed {
-    /* transform: scale(3); */
     background-color: rgb(170, 213, 252);
     transition: all 1000ms;
 }
 
-/* #tbody > tr > td:nth-child(4) {
-    transition: all 1000ms ease-in-out;
+
+tbody > tr > td:first-child {
+    position: relative;
 }
 
-#tbody > tr > td:nth-child(4).changed {
-    background-color: rgb(170, 213, 252);
-    transition: all 1000ms ease-in-out;
+tbody > tr > td:first-child::before {
+    content: attr(index);
+    font-size: 0.8rem;
+    position: absolute;
+    left: 7%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+thead tr th:nth-child(2),
+tbody tr td:nth-child(2) {
+    min-width: 15vw;
+}
+
+/* #test-table tr {
+    position: relative;
 } */
 
-
+/*
+#test-table tr::before {
+    content: attr(data-t-index);
+    top: 0;
+    left: 0; 
+} */
 
 #popup-background {
     width: 100vw;

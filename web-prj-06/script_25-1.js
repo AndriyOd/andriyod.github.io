@@ -111,8 +111,10 @@ function TotalCalc() {
 
 
 function CreateFirstCell() {
-    let droplist = document.createElement("select");
     let rows = document.querySelectorAll('#tbody > tr');
+    // rows[rows.length-1].setAttribute("index", rows.length);
+
+    let droplist = document.createElement("select");
     droplist.setAttribute("index", rows.length);
 
     let optionArr = [];
@@ -133,6 +135,8 @@ function CreateFirstCell() {
 
     let firstCell = document.querySelector('#tbody > tr:last-child > td:first-child');
     firstCell.appendChild(droplist);
+
+    firstCell.setAttribute("index", rows.length);
 }
 
 
@@ -350,6 +354,11 @@ function UpdateFirstColumnListeners() {
             CreateFourthCell(changedSelItemNum);
         });
     });
+
+    // let rows = document.querySelectorAll('#tbody > tr');
+    // let posNum = document.querySelector('#tbody > tr:last-child > td:first-child::before');
+    // // console.log(posNum);
+    // posNum.textContent = `${rows.length}.`;
 }
 
 
