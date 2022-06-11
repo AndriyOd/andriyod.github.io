@@ -1,0 +1,334 @@
+:root {
+    --color-1: dodgerblue;
+    --color-1-1: rgb(146, 197, 249);
+    --color-2: gray;
+    --color-2-1: lightgray;
+    --m-btn-width: 40px;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Quicksand", sans-serif;
+    scroll-behavior: smooth;
+}
+
+h1 {
+    text-align: right;
+    margin-right: 1%;
+}
+
+p {
+    font-size: 1.2em;
+}
+
+nav {
+    top:0;
+    left: 0;
+    padding: 0;
+    margin: 0;
+}
+
+#nav-plate {
+    box-sizing: content-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 70px;
+    cursor: pointer;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: transparent;
+    z-index: 0;
+}
+
+#nav-plate::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+    top: 0;
+    left: 0;
+    border-bottom: 3px solid var(--color-1);
+    transform: scaleX(0);
+    transition: all 1000ms;
+}
+
+#nav-plate.active {
+    background-color: white;
+    transition: all 1000ms;
+}
+
+#nav-plate.active::after {
+    transform: scaleX(1);
+    transition: all 1000ms;
+}
+
+#menu-btn-container {
+    position: relative;
+    width: var(--m-btn-width);
+    height: var(--m-btn-width);
+    top: 6px;
+    left: 6px;
+    background-color: white;
+    box-shadow: 0 0 10px lightgray;
+    transform: scale(1); 
+    transition: all 500ms;
+    transition-delay: 1000ms;
+    flex-basis: var(--m-btn-width);
+    z-index: 2;
+}
+
+#menu-btn-container * {
+    margin: 0;
+    padding: 0;
+}
+
+/* MENU BUTTON */
+#menu-btn {
+    position: relative;
+    z-index: 2;
+    margin: 0;
+    padding: 0;
+    width: var(--m-btn-width);
+    height: var(--m-btn-width);
+    background-color: white;
+    transition: all 500ms;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#menu-btn-container::before,
+#menu-btn-container::after  {
+    content: '';
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    z-index: 3;
+    box-sizing: border-box;
+    top: 0;
+    left: 0; 
+
+    transition: all 1000ms;
+}
+
+#menu-btn-container::before {
+    border-bottom: 2px solid gray;
+    border-top: 2px solid gray;
+    transform: scaleX(1);
+    transition: all 1000ms;
+}
+
+#menu-btn-container::after {
+    border-left: 2px solid gray;
+    border-right: 2px solid gray;
+    transform: scaleY(1);
+    transition: all 1000ms;
+}
+
+#menu-btn-container.active {
+    transform: scale(1.2);
+    height: calc(var(--m-btn-width) + 15px);
+    box-shadow: 0 0 0;
+    transition: all 1000ms;
+}
+
+#menu-label {
+    position: relative;
+    z-index: 1;
+    width: var(--m-btn-width);
+    height: 15px;
+    background-color: white;
+    font-size: 0.7em;
+    letter-spacing: 1px;
+    text-align: center;
+    font-weight: bold;
+    color: var(--color-1);
+    transform: translateY(-100%);
+    transition: all 500ms;
+    transition-delay: 1000ms;
+}
+
+
+
+#menu-btn-container:hover {
+    height: calc(var(--m-btn-width) + 15px);
+    transition: all 500ms;
+}
+
+#menu-btn-container:hover #menu-label {
+    transform: translateY(0%); 
+    transition: all 500ms;
+}
+
+#menu-btn-container.active #menu-label {
+    transform: translateY(0%); 
+    transition: all 500ms;
+}
+
+#menu-btn-container.active::before {
+    transform: scaleX(0);
+    transition: all 1000ms;
+}
+
+#menu-btn-container.active::after {
+    transform: scaleY(0);
+    transition: all 1000ms;
+} 
+
+
+
+
+/* HAMBURGER LINES */
+#m-line-2 { 
+    width: 60%;
+    height: 4px;
+    border-radius: 2px;
+    background-color: var(--color-1);
+    padding: 0;
+    position: relative;
+    transform: scaleX(1);
+    transition: all 1000ms;
+}
+
+#m-line-2::before, 
+#m-line-2::after {
+    content: '';
+    width: 100%;
+    height: 4px;
+    border-radius: 2px;
+    background-color: var(--color-1);
+    padding: 0; 
+    position: absolute;
+}
+
+#m-line-2::before {
+    transform: translateY(-200%);
+    transition: all 1000ms;
+}
+
+#m-line-2::after {
+    transform: translateY(200%);
+    transition: all 1000ms;
+}
+
+#menu-btn-container.active #m-line-2 { 
+    transform: translateX(-200%); 
+    transition: all 1000ms;
+}
+
+#menu-btn-container.active #m-line-2::before { 
+    transform: translateX(200%) rotate(45deg);
+    transition: all 1000ms;
+}
+
+#menu-btn-container.active #m-line-2::after { 
+    transform: translateX(200%) rotate(-45deg);
+    margin-bottom: -2px;
+    transition: all 1000ms;
+}
+
+
+/* MENU HEADER */
+#menu-header {
+    box-sizing: content-box;
+    position: relative;
+    align-self: stretch;
+    flex-grow: 9;
+    margin: 0px 10px;
+    background-color: white;
+    transform: translateY(-25%);
+    opacity: 0;
+    z-index: 1;
+    transition: all 1000ms;
+}
+
+#nav-plate.active > #menu-header {
+    transform: translateY(0%);
+    opacity: 1;
+    transition: all 1000ms;
+}
+
+#menu-header ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 10px;
+    height: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+}
+
+#menu-header li {
+    display: block;
+    align-self: center;
+
+    border-right: 1px solid var(--color-2-1);
+    position: relative;
+}
+
+#menu-header li:last-child {
+    border-right: none;
+}
+
+#menu-header a {
+    text-decoration: none;
+    /* display: block; */
+    padding: 3px 0px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-2-1);
+    transition: 300ms;
+}
+
+#menu-header a:hover {
+    color: var(--color-1);
+    transition: all 300ms;
+}
+
+#menu-header a::after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 3%;
+    left: 0;
+    border-bottom: 2px solid var(--color-1);
+    transform: scaleX(0);
+    transition: all 500ms;
+}
+
+#menu-header a:hover::after {
+    transform: scaleX(1);
+    transition: all 500ms;
+}
+
+#menu-header a > img {
+    height: 40px;
+    padding: 0 15px;
+    /* filter: grayscale(100%); */
+    /* filter: saturate(0%) hue-rotate(0); */
+    opacity: 0.3;
+    transition: all 500ms;
+}
+
+#menu-header a:hover > img {
+    /* filter: grayscale(0%); */
+    /* filter: saturate(100%) hue-rotate(90deg); */
+    opacity: 1;
+    transition: all 500ms;
+}
