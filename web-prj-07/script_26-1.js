@@ -22,13 +22,13 @@ headerLinks.forEach((item) => {
 
         if (window.scrollY < scrollTargetCoordY) {
             if (!scrollTimer) {
-                scrollTimer = setInterval(SmoothScrollDown, 20, scrollTargetCoordY);
+                scrollTimer = setInterval(SmoothScrollDown, 10, scrollTargetCoordY);
             }
         }
 
         if (window.scrollY > scrollTargetCoordY) {
             if (!scrollTimer) {
-                scrollTimer = setInterval(SmoothScrollUp, 20, scrollTargetCoordY);
+                scrollTimer = setInterval(SmoothScrollUp, 10, scrollTargetCoordY);
             }
         }
     });
