@@ -17,9 +17,9 @@ body {
 
 .section-border-line {
     width: 97%;
-    height: 1vw;
+    /* height: 1vw; */
     border-top: 1px solid gray;
-    margin: 20px auto;
+    margin: 60px auto;
 }
 
 .section-header > * {
@@ -32,6 +32,8 @@ body {
 h1 {
     text-align: right;
     margin-right: 1%;
+    margin-bottom: 30px;
+    /* text-decoration: underline dodgerblue 2px; */
 }
 
 .section-header > p {
@@ -50,14 +52,18 @@ h1 {
     font-size: 1.2em;
 } */
 
-nav {
+/* nav {
     top:0;
     left: 0;
     padding: 0;
     margin: 0;
-}
+} */
 
 #nav-plate {
+    top:0;
+    left: 0;
+    padding: 0;
+    margin: 0;
     min-width: 250px;
     box-sizing: content-box;
     position: fixed;
@@ -72,7 +78,7 @@ nav {
     justify-content: flex-start;
     align-items: flex-start;
     background-color: transparent;
-    z-index: 0;
+    z-index: 10;
 }
 
 #nav-plate::after {

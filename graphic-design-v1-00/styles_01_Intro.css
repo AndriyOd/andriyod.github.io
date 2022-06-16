@@ -1,0 +1,214 @@
+.cSection {
+    width: 100%;
+    height: 100vh;
+    /* background-color: rgb(243, 243, 243); */
+    /* background-color: black; */
+    margin: 0;
+    padding: 0;
+}
+
+#Intro-container {
+    /* position: relative; */
+    box-sizing: border-box;
+    width: 100%;
+    height: 80%;
+    padding: 10px;
+    /* display: flex;
+    justify-content: space-between;
+    align-items: flex-start; */
+    display: grid; 
+    gap: 0; 
+    grid-template-areas: 
+        "intro-text intro-img "
+        "intro-aux intro-img ";
+    grid-template-columns: 0.6fr 1fr;
+    grid-template-rows: 1fr 0.6fr;
+}
+
+/* #Intro-container > div { border: 1px dashed gray; } */
+
+
+#Intro-text { 
+    grid-area: intro-text;
+    padding-top: 30px; 
+    overflow: hidden;
+    /* transform: translateX(100%); */
+    /* border-bottom: 1px solid lightgray; */
+}
+
+#Intro-text-wrapper {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+#Intro-text-wrapper > img {
+    width: 100px;
+    height: 100px;
+    /* background-color: antiquewhite; */
+    border-radius: 50%;
+    border: 1px solid gray;
+    float: left;
+    margin-right: 10px; 
+}
+
+#Intro-text-wrapper > p {
+    /* color: rgb(79, 78, 78); */
+    margin: 0 35px 0 0;
+    line-height: 150%;
+    text-align: justify;
+    /* font-family: Comic Sans MS; */
+}
+
+#Intro-container.loaded #Intro-text-wrapper,
+#Intro-container.loaded #Intro-aux > img { 
+    transform: translateX(0%);
+    opacity: 1;
+    transition: all 1500ms;
+    transition-delay: 4s;
+}
+
+
+#Intro-aux { 
+    grid-area: intro-aux; 
+    /* position: relative;*/
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    overflow: hidden;
+    /* border-right: 1px solid lightgray; */
+}
+
+#Intro-aux > img {
+    display: block;
+    /* position: absolute; */
+    width: 60%;
+    /* right: 30px; */
+    opacity: 0;
+    margin-right: 25px;
+    transform: translateX(100%);
+}
+
+
+
+#Intro-img { 
+    grid-area: intro-img; 
+    width: 100%;
+    height: 100%;
+    /* background-color: antiquewhite; */
+    /* border-left: 1px solid lightgray; */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+
+#Intro-img::before { 
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 100;
+    border-left: 2px solid lightgray;
+    transform: scaleY(0);
+    transition: all 1500ms;
+    /* border-left: 1px solid dodgerblue; */
+    /* z-index: 2; */
+}
+
+#Intro-container.loaded #Intro-img::before { 
+    transform: scaleY(1);
+    transition: all 1500ms;
+    /* transition-delay: 2s; */
+}
+
+
+#Intro-title { 
+    position: relative;
+    width: 100%;
+    height: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+#Intro-container.loaded #Intro-title { 
+    transform: translateX(0%);
+    opacity: 1;
+    transition: all 2000ms ease-out;
+    transition-delay: 1500ms;
+}
+
+#Intro-title > img  {
+    display: block;
+    width: 90%;
+    position: relative;
+}  
+
+/* #Intro-title::after {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.5;
+    /* background-color: antiquewhite; 
+}  */
+
+
+#Intro-container.loaded #Intro-wrapper, 
+#Intro-container.loaded #Intro-aux > img { 
+    transform: translateX(0%);
+    opacity: 1;
+    transition: all 1500ms ease-out;
+    transition-delay: 4000ms;
+}
+
+#Intro-examples {
+    width: 100%;
+    height: 65%;
+    position: relative;
+    display: flex;
+    transform: translateX(-100%);
+    opacity: 0;
+    /* background-color: antiquewhite; */
+}
+
+#Intro-examples > img {
+    display: block;
+    width: 40%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    box-shadow: 0 5px 10px lightgray;
+    border: 3px solid gray;
+    opacity: 0.9;
+}
+
+#Intro-examples > img:nth-child(1) {
+    transform: translate(-110%,-95%);
+    z-index: 1;
+}
+
+#Intro-examples > img:nth-child(2) {
+    transform: translate(-50%, -10%);
+    z-index: 0;
+}
+
+#Intro-examples > img:nth-child(3) {
+    transform: translate(20%,-95%);
+    z-index: 1;
+}
+
+#Intro-container.loaded #Intro-examples { 
+    transform: translateX(0%);
+    opacity: 1;
+    transition: all 2000ms ease-out;
+    transition-delay: 1500ms;
+}
