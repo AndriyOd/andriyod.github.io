@@ -3,7 +3,7 @@
     --vWidth: 95vw;
     width: var(--vWidth);
     /* height: 700px;  */
-    height: calc(var(--vWidth) / 2); 
+    height: calc(var(--vWidth) / 2.2); 
     padding: 0;
     margin: 0 auto;
     display: flex;
@@ -125,7 +125,7 @@
     width: 800px;
     /* background-color: bisque; */
     /* border: 1px solid black; */
-    margin: 0px auto;
+    margin: 10px auto;
     display: flex;
     justify-content: space-around;
 }

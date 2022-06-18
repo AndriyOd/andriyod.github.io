@@ -1,7 +1,18 @@
-// Auto-fillling paragraphs with "Lorem..." text
-// let str = document.querySelector('#div01 > p').textContent;
-// let pArr = document.querySelectorAll('p');
-// pArr.forEach((item) => item.textContent = str);
+// window.addEventListener('scroll', (event)=>{
+//     // console.log(window);
+//     // console.dir(window);
+//     let wscrollY = window.scrollY;
+//     let winnerHeight = window.innerHeight;
+//     document.querySelector('#wscrollTop').textContent = wscrollY;
+//     document.querySelector('#wheight').textContent = winnerHeight;
+
+//     let objectOffsetTop = document.querySelector('#grid-container').offsetTop;
+//     let windowOffsetTop = wscrollY + winnerHeight;
+//     if (windowOffsetTop > objectOffsetTop) {
+//         console.log('We have just reached (touched) the object by bottom of the window');
+//     }
+
+// });
 
 // Navigation bar behaviour Listeners
 document.querySelector('#menu-btn-container').addEventListener('click', (e) => {

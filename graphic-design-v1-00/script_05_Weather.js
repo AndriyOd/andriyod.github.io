@@ -130,13 +130,13 @@ async function GetHourlyWeatherData() {
     let urlp2 = gChosenCity.getAttribute("data-city-coord");
     let urlp3 = '&units=metric&appid=1f7ea79cbcdd7df3a6393527c12364ce';
     let url = urlp1 + urlp2 + urlp3;
-    console.log(url);
+    // console.log(url);
     let response = await fetch(url);
     let reqData = await response.json();
-    console.log('typeof reqData');
-    console.log(typeof reqData);
-    console.log('reqData');
-    console.log(reqData);
+    // console.log('typeof reqData');
+    // console.log(typeof reqData);
+    // console.log('reqData');
+    // console.log(reqData);
 
     CurTempWrite(reqData);
     DailyTempWrite(reqData);

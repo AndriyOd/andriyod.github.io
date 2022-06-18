@@ -16,7 +16,7 @@
 #grid-container {
     --numOfColumns: 4;
     width: 90vw;
-    margin: 4vh auto 8vh auto;
+    margin: 10px auto 10px auto;
     display: grid;
     grid-template-columns: repeat(var(--numOfColumns), 1fr);
     gap: 30px;
