@@ -2,7 +2,7 @@ let gChosenCity;
 
 GetDate();
 SetInitialCity();
-//GetHourlyWeatherData();
+GetHourlyWeatherData();
 
 
 // let a = Boolean(gChosenCity.firstElementChild);
