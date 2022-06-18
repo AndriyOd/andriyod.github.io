@@ -17,6 +17,7 @@ let headerLinks = document.querySelectorAll('#menu-header a');
 headerLinks.forEach((item) => {
     item.addEventListener('click', (event) => {
         event.preventDefault();
+        // event.stopPropagation();
         let targetId = document.querySelector(event.target.attributes.href.value);
         let scrollTargetCoordY = targetId.offsetTop-80;
 
@@ -24,8 +25,8 @@ headerLinks.forEach((item) => {
         // console.dir(typeof targetId.id);
 
         if (targetId.id == "hContacts") {
-            console.log('In If block');
-            scrollTargetCoordY = document.querySelector('#hWeather').offsetTop+5;
+            // console.log('In If block');
+            scrollTargetCoordY = document.querySelector('#hWeather').offsetTop;
         }
 
         if (window.scrollY < scrollTargetCoordY) {

@@ -10,18 +10,23 @@ tilesFrontSideCollection.forEach((item, index, array) => {
     });
 });
 
-//Tiles Decolorizng
-document.querySelector('#hTiles').addEventListener('click', tilesDecolorizing);
+// Tiles Decolorizng
+//document.querySelector('#Tiles-header').addEventListener('click', tilesDecolorizing);
 
 
 
-function GridClickHandler() {
+function GridClickHandler(event) {
     let tiles = document.querySelectorAll('.tile');
 
     tiles.forEach((item, index, array) => {
-        item.addEventListener('click', () => {
+        item.addEventListener('click', (event) => {
+            if (event.ctrlKey) {
+                tilesDecolorizing();
+            }
+            else {
             item.classList.toggle('tile-rotated');
             AutoRotate(item);
+            }
         });
     });
 }
@@ -32,8 +37,8 @@ function AutoRotate(element) {
     }, 3000);
 }
 
-function tilesDecolorizing(event) {
-    if (event.ctrlKey) {
+function tilesDecolorizing() {
+    // if (event.ctrlKey) {
         let tilesFrontSideCollection = document.querySelectorAll('.tile-frontside');
         tilesFrontSideCollection.forEach((item) => {
             let upperImg = item.children[1];
@@ -41,5 +46,4 @@ function tilesDecolorizing(event) {
             let title = item.children[2];
             title.classList.remove('colorized');
     });
-    } 
-}
+} 

@@ -6,9 +6,12 @@
     --m-btn-width: 40px;
 }
 
-/* html {
-    scroll-behavior: smooth;
-} */
+section {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
 
 body {
     font-family: "Quicksand", sans-serif;
@@ -44,10 +47,6 @@ h1 {
     font-size: 1.25rem;
 }
 
-#hTiles {
-    cursor: pointer;
-}
-
 /* p {
     font-size: 1.2em;
 } */
@@ -73,7 +72,7 @@ h1 {
     padding: 0;
     width: 100%;
     height: 70px;
-    cursor: pointer;
+    cursor: auto;
     display: flex;
     justify-content: flex-start;
     align-items: flex-start;
@@ -95,6 +94,7 @@ h1 {
 }
 
 #nav-plate.active {
+    cursor: pointer;
     background-color: white;
     transition: all 1000ms;
 }
@@ -117,6 +117,7 @@ h1 {
     transition-delay: 1000ms;
     flex-basis: var(--m-btn-width);
     z-index: 2;
+    cursor: pointer;
 }
 
 #menu-btn-container * {
@@ -286,6 +287,7 @@ h1 {
     z-index: 1;
     transition: all 1000ms;
     pointer-events: none;
+    cursor: auto;
 }
 
 #nav-plate.active > #menu-header {
@@ -293,6 +295,7 @@ h1 {
     opacity: 1;
     transition: all 1000ms;
     pointer-events: auto;
+    cursor: pointer;
 }
 
 #menu-header ul {

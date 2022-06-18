@@ -9,6 +9,10 @@
     margin:0px;
 } */
 
+#Tiles-header {
+    cursor: pointer;
+}
+
 #grid-container {
     --numOfColumns: 4;
     width: 90vw;
