@@ -5,6 +5,7 @@
     border-top: 3px solid dodgerblue;
     margin: 0;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
     align-items: flex-start; 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -29,4 +30,12 @@
     align-items: center;
 }
 
+@media screen and (max-width: 750px) {
+    #contacts-block {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 150px;
+    }
+}
 

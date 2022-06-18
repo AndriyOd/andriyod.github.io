@@ -201,3 +201,53 @@
     transition: all 2000ms ease-out;
     transition-delay: 1500ms;
 }
+
+
+
+
+@media screen and (max-width: 1000px) {
+    #Intro-container {
+        position: static;
+        grid-template-areas: 
+            "intro-img"
+            "intro-text" 
+            "intro-aux"; 
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+
+    #Intro-img {
+        position: static;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #Intro-title img {
+        height: 100%;
+        width: auto;
+    }
+
+    #Intro-examples {
+        position: static;
+        display: flex;
+        justify-content: center;
+    }
+
+    #Intro-examples img,
+    #Intro-examples > img:nth-child(1),
+    #Intro-examples > img:nth-child(2) {
+        position: static;
+        top: 0;
+        left: 0;
+        transform: translate(0%,0%) scale(0.8);
+    }
+
+    #Intro-examples > img:nth-child(3) {
+        display: none;
+    }
+
+    #Intro-text,
+    #Intro-aux {
+        position: static;
+    }
+}
