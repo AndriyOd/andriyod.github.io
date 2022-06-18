@@ -32,7 +32,7 @@ function Init() {
 
 // Next-button click-fucntion
 document.querySelector('#next').onclick = function () {
-    console.log('next');
+    // console.log('next');
 
     // Dots under slider animating
     dots[activeDot].classList.remove('dot-active');

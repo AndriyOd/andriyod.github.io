@@ -20,6 +20,14 @@ headerLinks.forEach((item) => {
         let targetId = document.querySelector(event.target.attributes.href.value);
         let scrollTargetCoordY = targetId.offsetTop-80;
 
+        // console.dir(targetId.id);
+        // console.dir(typeof targetId.id);
+
+        if (targetId.id == "hContacts") {
+            console.log('In If block');
+            scrollTargetCoordY = document.querySelector('#hWeather').offsetTop+5;
+        }
+
         if (window.scrollY < scrollTargetCoordY) {
             if (!scrollTimer) {
                 scrollTimer = setInterval(SmoothScrollDown, 10, scrollTargetCoordY);

@@ -2,7 +2,7 @@ let gChosenCity;
 
 GetDate();
 SetInitialCity();
-GetHourlyWeatherData();
+//GetHourlyWeatherData();
 
 
 // let a = Boolean(gChosenCity.firstElementChild);
@@ -28,7 +28,31 @@ function SetInitialCity() {
 document.querySelector('#wChangeButton').addEventListener('click',()=>{
     document.querySelector('#wpopup-background').style.display="block";
     document.querySelector('#wpopup-window').classList.add('active');
+
+    window.addEventListener('scroll', scrollDisable, {passive: false});
+    window.addEventListener('mousewheel', scrollDisable, {passive: false});
+    window.addEventListener('touchmove', scrollDisable, {passive: false});
 });
+
+
+// Disable Scroll
+// let popupWindow = document.querySelector('#wpopup-window');
+// if (popupWindow.classList.contains("active")) {
+//     console.log('scrollDisable 1');
+//     window.addEventListener('scroll', scrollDisable, {passive: false});
+//     window.addEventListener('mousewheel', scrollDisable, {passive: false});
+//     window.addEventListener('touchmove', scrollDisable, {passive: false});
+// }
+
+// Disable Scroll
+function scrollDisable (event) {
+        // console.log('scrollDisable 2');
+        event.preventDefault();
+        event.stopPropagation(); 
+        return false;       
+}
+
+
 
 // Popup windows city selection
 let cities = document.querySelectorAll('#wcities-grid-container > div');
@@ -49,6 +73,10 @@ document.querySelector('#wX').addEventListener('click',()=>{
 // Reset selected city to the chosen city (previous selection) 
     document.querySelector('#wcities-grid-container > div.selected').classList.remove('selected');
     gChosenCity.classList.add('selected');
+
+    window.removeEventListener('scroll', scrollDisable, {passive: false});
+    window.removeEventListener('mousewheel', scrollDisable, {passive: false});
+    window.removeEventListener('touchmove', scrollDisable, {passive: false});
 });
 
 
@@ -59,6 +87,11 @@ document.querySelector('#wpopup-cancel').addEventListener('click',()=>{
 // Reset selected city to the chosen city (previous selection) 
     document.querySelector('#wcities-grid-container > div.selected').classList.remove('selected');
     gChosenCity.classList.add('selected');
+
+    window.removeEventListener('scroll', scrollDisable, {passive: false});
+    window.removeEventListener('mousewheel', scrollDisable, {passive: false});
+    window.removeEventListener('touchmove', scrollDisable, {passive: false});
+
 });
 
 
@@ -71,7 +104,11 @@ document.querySelector('#wpopup-ok').addEventListener('click',()=>{
 // Set new city to the weather widget
     let cellCity = document.querySelector('#wCity>p');
     cellCity.textContent = gChosenCity.textContent; 
-    GetHourlyWeatherData();   
+    GetHourlyWeatherData();  
+    
+    window.removeEventListener('scroll', scrollDisable, {passive: false});
+    window.removeEventListener('mousewheel', scrollDisable, {passive: false});
+    window.removeEventListener('touchmove', scrollDisable, {passive: false});
 });
 
 

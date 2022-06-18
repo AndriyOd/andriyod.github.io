@@ -19,7 +19,20 @@ popupWindowX.addEventListener('click', ClosePopupWindow);
 function ClosePopupWindow() {
     document.querySelector('#popup-background').classList.remove('active');
     document.querySelector('#popup-window').classList.remove('active');
+    window.removeEventListener('scroll', scrollDisable);
+    window.removeEventListener('mousewheel', scrollDisable);
+    window.removeEventListener('touchmove', scrollDisable);
+
+// scrollDisable function is defined in "script_05_Weather.js"
 }
+
+// Disable Scroll
+// function scrollDisable (event) {
+//     console.log('scrollDisable 2');
+//     event.preventDefault();
+//     event.stopPropagation(); 
+//     return false;       
+// }
 
 // Test
 // let fourthColumn = document.querySelectorAll('#tbody > tr > td:nth-child(4)');
@@ -39,6 +52,10 @@ function RowAdd() {
         // alert('Number of tasks is 5');
         document.querySelector('#popup-background').classList.add('active');
         document.querySelector('#popup-window').classList.add('active');
+
+        window.addEventListener('scroll', scrollDisable, {passive: false});
+        window.addEventListener('mousewheel', scrollDisable, {passive: false});
+        window.addEventListener('touchmove', scrollDisable, {passive: false});    
         return;
     }
 
