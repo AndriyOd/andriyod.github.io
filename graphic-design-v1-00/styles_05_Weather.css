@@ -319,6 +319,62 @@ body {
 
 
 
+/* Hidden state before appearing */
+#weather-grid-container.hidden * { opacity: 0; }
+
+#weather-grid-container.hidden #wTomDateTitle,
+#weather-grid-container.hidden #wTomDate { transform: translateX(100%); }
+
+#weather-grid-container.hidden #CurDateTitle,
+#weather-grid-container.hidden #CurDate { transform: translateX(-300%); }
+
+#weather-grid-container.hidden #wTomParamTitle,
+#weather-grid-container.hidden #wTomParam,
+#weather-grid-container.hidden #wAuxParamTitle,
+#weather-grid-container.hidden #wAuxParam,
+#weather-grid-container.hidden #wDailyTempTitle,
+#weather-grid-container.hidden #wDailyTemp {transform: translateY(100%);}
+
+#weather-grid-container.hidden #wCurTemp,
+#weather-grid-container.hidden #wCurIcon,
+#weather-grid-container.hidden #wCurDescr { transform: translateX(-100%); }
+
+#weather-grid-container.hidden #wCity { transform: translateY(500%); }
+
+/* Animated appearing */
+#weather-grid-container * { 
+    opacity: 1; 
+    transform: translate(0%, 0%);
+    transition: all 1000ms;
+}
+
+#weather-grid-container #wTomDateTitle,
+#weather-grid-container #wTomDate { transition-delay: 0ms; }
+
+#weather-grid-container #CurDateTitle,
+#weather-grid-container #CurDate { transition-delay: 500ms; }
+
+#weather-grid-container #wTomParamTitle,
+#weather-grid-container #wTomParam { transition-delay: 1000ms; }
+
+#weather-grid-container #wAuxParamTitle,
+#weather-grid-container #wAuxParam { transition-delay: 1500ms; }
+
+#weather-grid-container #wDailyTempTitle,
+#weather-grid-container #wDailyTemp { transition-delay: 2000ms; }
+
+#weather-grid-container #wCurTemp,
+#weather-grid-container #wCurIcon,
+#weather-grid-container #wCurDescr { transition-delay: 2500ms; }
+
+#weather-grid-container #wCity { transition-delay: 3000ms; } 
+
+
+
+
+
+
+
 
 @media screen and (max-width: 900px) {
 #weather-grid-container {

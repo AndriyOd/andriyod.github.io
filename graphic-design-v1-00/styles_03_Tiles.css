@@ -19,7 +19,7 @@
     margin: 10px auto 10px auto;
     display: grid;
     grid-template-columns: repeat(var(--numOfColumns), 1fr);
-    gap: 30px;
+    gap: 25px;
 }
 
 .tile-container {
@@ -27,7 +27,6 @@
     perspective: 1000px;
     transform-style: preserve-3d;
     aspect-ratio: 1/1;
-
 }
 
 .tile:hover {
@@ -133,6 +132,34 @@
     transform: rotateY(180deg);
     transition: all 2000ms;
 }
+
+
+.tile-container {
+    transform: translateY(0%);
+    opacity: 1;
+    transition: 1000ms;
+}
+
+
+
+.tile-container:nth-child(1), 
+.tile-container:nth-child(5) { transition-delay: 0ms; }
+
+.tile-container:nth-child(2), 
+.tile-container:nth-child(6) { transition-delay: 300ms; }
+
+.tile-container:nth-child(3), 
+.tile-container:nth-child(7) { transition-delay: 600ms; }
+
+.tile-container:nth-child(4), 
+.tile-container:nth-child(8) { transition-delay: 900ms; }
+
+#grid-container.hidden .tile-container {
+    transform: translateY(200%);
+    opacity: 0;
+}
+
+
 
 @media screen and (max-width: 1024px) {
     #grid-container {

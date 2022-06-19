@@ -52,7 +52,7 @@ td {
     height: 40px;
 }
 
-#tbody > tr,
+tbody > tr,
 tfoot > tr {
     text-align: center;
     background-color: white;
@@ -320,6 +320,28 @@ tbody tr td:nth-child(2) {
 }
 
 /* --- CheckBox stylizing */
+
+
+
+
+/* Hidden state before appearing */
+#table-container.hidden thead, 
+#table-container.hidden tfoot { transform: translateX(150%); }
+
+#table-container.hidden tbody { transform: translateX(-150%); }
+
+/* Animated appearing */
+#table-container * { 
+    transform: translateX(0%);
+    transition: all 1500ms;
+}
+
+#table-container #thead { transition-delay: 0ms; }
+#table-container #tbody { transition-delay: 750ms; }
+#table-container #tfoot { transition-delay: 1500ms; }
+
+
+
 
 @media screen and (max-width: 1000px) {
     th img {

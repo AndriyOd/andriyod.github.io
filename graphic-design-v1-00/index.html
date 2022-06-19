@@ -47,7 +47,9 @@
 
     <!-- <div id="scrollInfo">
         <p>window.scrollTop: <span id="wscrollTop"></span></p>
-        <p>window.height: <span id="wheight"></span></p>
+        <p>window.height/2: <span id="wheight"></span></p>
+        <p>window.offseTop: <span id="woffsetTop"></span></p>
+        <p>object.offsetTop: <span id="wobjectTop"></span></p>
     </div> -->
 
     <!-- INTRO -->
@@ -97,11 +99,12 @@
     <div class="section-border-line"></div>
     <div class="section-header">
         <h1 id="hPortfolio">Portfolio</h1>
-        <div id="slider-wrapper">
+    </div>
+    <div id="slider-wrapper">
             <div class="nav-but" id="prev">
                 <p><b>&lt</b></p>
             </div>
-            <div id="background">
+            <div id="slider-background">
                 <img src="" alt="im-0" class="slide-container slide-0">
                 <img src="" alt="im-1" class="slide-container slide-1">
                 <img src="" alt="im-2" class="slide-container slide-2">
@@ -111,18 +114,18 @@
             <div class="nav-but" id="next">
                 <p><b>&gt</b></p>
             </div>
-        </div>
-        <div id="slider-dots-container">
-            <!-- To be filled by Javascript -->
-        </div>
     </div>
+            <div id="slider-dots-container">
+            <!-- To be filled by Javascript -->
+            </div>
+
 
 
     <!-- TYPES OF DESIGN-->
     <div class="section-border-line"></div>
     <div class="section-header" id="Tiles-header">
         <h1 id="hTiles">Types Of Design</h1>
-        <p>The images below are just examples from the Intenet</p>
+        <p>The images below are just examples from the Internet</p>
         <p>For decolorizing images in this section click any tile (image) with "Ctrl" key pressed</p>
     </div>
     <div id="grid-container">
@@ -309,15 +312,16 @@
         <div id="wTomDateTitle">Tomorrow</div>
 
         <div id="wCurDate">
-            Date
+            Current Date
             <!-- To be filled by JavaScript-->
         </div>
         <div id="wTomDate">
-            Date
+            Tomorrow Date
             <!-- To be filled by JavaScript-->
         </div>
 
         <div id="wCurTemp">
+            Current Temperature
             <!-- To be filled by JavaScript-->
         </div>
         <div id="wCurIcon">
