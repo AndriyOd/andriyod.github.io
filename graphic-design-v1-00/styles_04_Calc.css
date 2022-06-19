@@ -337,8 +337,8 @@ tbody tr td:nth-child(2) {
 }
 
 #table-container #thead { transition-delay: 0ms; }
-#table-container #tbody { transition-delay: 750ms; }
-#table-container #tfoot { transition-delay: 1500ms; }
+#table-container #tbody { transition-delay: 600ms; }
+#table-container #tfoot { transition-delay: 1200ms; }
 
 
 

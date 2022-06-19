@@ -15,11 +15,12 @@
 
 #grid-container {
     --numOfColumns: 4;
-    width: 90vw;
+    width: 85vw;
     margin: 10px auto 10px auto;
     display: grid;
     grid-template-columns: repeat(var(--numOfColumns), 1fr);
-    gap: 25px;
+    column-gap: 30px;
+    row-gap: 20px;
 }
 
 .tile-container {

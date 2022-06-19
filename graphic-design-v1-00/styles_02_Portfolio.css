@@ -1,6 +1,6 @@
 #slider-wrapper {
     /* max-width: 100%; */
-    --vWidth: 95vw;
+    --vWidth: 90vw;
     width: var(--vWidth);
     /* height: 700px;  */
     height: calc(var(--vWidth) / 2.2); 
