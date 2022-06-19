@@ -331,14 +331,14 @@ tbody tr td:nth-child(2) {
 #table-container.hidden tbody { transform: translateX(-150%); }
 
 /* Animated appearing */
-#table-container * { 
+thead, tbody, tfoot { 
     transform: translateX(0%);
-    transition: all 1500ms;
+    transition: transform 1500ms;
 }
 
-#table-container #thead { transition-delay: 0ms; }
-#table-container #tbody { transition-delay: 600ms; }
-#table-container #tfoot { transition-delay: 1200ms; }
+#table-container thead { transition-delay: 0ms; }
+#table-container tbody { transition-delay: 600ms; }
+#table-container tfoot { transition-delay: 1200ms; }
 
 
 
