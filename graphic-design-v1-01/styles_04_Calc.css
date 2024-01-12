@@ -1,0 +1,351 @@
+:root {
+    --backgrndColor: rgb(201, 222, 244);
+}
+
+/* body {
+    font-family: "Quicksand", sans-serif;
+    position: relative;
+    margin: 0;
+}
+
+.section-border-line {
+    width: 97%;
+    height: 1vw;
+    border-top: 1px solid gray;
+    margin: 20px auto;
+}
+
+.section-header>* {
+    margin: 0px;
+    text-align: end;
+    margin-right: 20px;
+    margin-bottom: 20px;
+} */
+
+#table-container {
+    background-color: var(--backgrndColor);
+    width: 100%;
+    min-width: 840px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    /* position: relative; */
+}
+
+table {
+    border-collapse: collapse;
+    width: 80vw;
+    min-width: 800px;
+    margin: 20px auto;
+    /* padding: 20px; */
+}
+
+th {
+    background-color: rgb(229, 229, 229);
+    /* margin-top: 20px; */
+}
+
+/* tr, th, td { padding: 10px; } */
+th,
+td {
+    height: 40px;
+}
+
+tbody > tr,
+tfoot > tr {
+    text-align: center;
+    background-color: white;
+    border-bottom: 10px solid var(--backgrndColor);
+    border-top: 10px solid var(--backgrndColor);
+    border-left: 3px solid dodgerblue;
+    border-right: 3px solid dodgerblue;
+}
+
+th {
+    position: relative;
+}
+
+th > img {
+    position: absolute;
+    left: 2%;
+    bottom: 25%;
+}
+
+/* #table-container > img {
+    position: absolute;
+} */
+
+#tfoot td {
+    position: relative;
+    font-weight: bold;
+}
+
+#tfoot td:first-child {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/* tbody tr td {
+    border: 1px solid dodgerblue;
+} */
+
+#plus,
+#minus {
+    font-size: 2rem;
+    font-weight: bold;
+    border: 1px solid dodgerblue;
+    color: dodgerblue;
+    background-color: var(--backgrndColor);
+    border-radius: 4px;
+    width: 30px;
+    height: 30px;
+    padding: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+#plus:hover,
+#minus:hover {
+    color: white;
+    background-color: dodgerblue;
+    cursor: pointer;
+}
+
+#tbody > tr > td:nth-child(3) {
+    font-size: 0.8rem;
+}
+
+#thead > tr > th:nth-child(3)::after {
+    content: '\00000a .PSD - bitmap image \00000a .SVG - vector image';
+    font-weight: lighter;
+    font-size: 0.7rem;
+    white-space: pre;
+}
+
+#thead > tr > th:nth-child(1),
+#thead > tr > th:nth-child(2),
+#thead > tr > th:nth-child(3),
+#tbody > tr > td:nth-child(1),
+#tbody > tr > td:nth-child(2),
+#tbody > tr > td:nth-child(3) {
+    border-right: 0.05em solid rgba(211, 211, 211, 0.2);
+    /* border-top: 1px solid dodgerblue;
+    border-bottom: 1px solid dodgerblue; */
+}
+
+td {
+    transition: all 1000ms;
+}
+
+td.changed {
+    background-color: rgb(170, 213, 252);
+    transition: all 1000ms;
+}
+
+
+tbody > tr > td:first-child {
+    position: relative;
+}
+
+tbody > tr > td:first-child::before {
+    content: attr(index);
+    font-size: 0.8rem;
+    position: absolute;
+    left: 7%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+thead tr th:nth-child(2),
+tbody tr td:nth-child(2) {
+    min-width: 15vw;
+}
+
+/* #test-table tr {
+    position: relative;
+} */
+
+/*
+#test-table tr::before {
+    content: attr(data-t-index);
+    top: 0;
+    left: 0; 
+} */
+
+#popup-background {
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: none;
+}
+
+#popup-background.active {
+    display: block;
+}
+
+#popup-window {
+    background-color: rgb(182, 217, 252);
+    position: fixed;
+    z-index: 11;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    border: 1px solid gray;
+    width: 50vw;
+    min-width: 550px;
+    height: auto;
+    border-radius: 10px;
+    transition: transform 1000ms;
+    overflow: hidden;
+    transition: transform 400ms;
+}
+
+#popup-window.active {
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform 400ms;
+}
+
+#popup-header {
+    background-color: lightgray;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid gray;
+}
+
+#popup-header > div {
+    font-weight: bold;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#X {
+    margin-right: 20px;
+    padding: 5px;
+    font-size: 1.5rem;
+    color: gray;
+}
+
+#X:hover {
+    background-color: rgba(128, 128, 128, 0.3);
+    cursor: pointer;
+}
+
+#popup-message {
+    font-weight: bold;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#ok-btn {
+    width: 10%;
+    padding: 0.5rem;
+    border: 1px solid gray;
+    color: gray;
+    border-radius: 5px;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 25px;
+}
+
+#ok-btn:hover {
+    background-color: dodgerblue;
+    color: white;
+    cursor: pointer;
+}
+
+
+/* CheckBox stylizing ---- */
+.checkbox-container > * {
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.checkbox-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+.checkbox-container input[type='checkbox'] {
+    opacity: 0;
+    position: absolute;
+}
+
+.checkbox-container label {
+    display:flex;
+    align-items: center;
+}
+
+.checkbox-container label::before {
+    content: '';
+    width: 1.2em;
+    height: 1.2em;
+    border: 0.05em solid dodgerblue;
+    border-radius: 0.15em;
+    margin-right: 0.5em;
+    display:flex;
+}
+
+.checkbox-container label:hover::before {
+/* #checkbox-container input[type='checkbox']:hover + label::before { */
+    background-color: rgb(170, 213, 252);
+    box-shadow: 0 4px 4px lightgray;
+}
+
+.checkbox-container input[type='checkbox']:checked + label::before {
+    content: '\002714';
+    color: white;
+    font-size: 1.25em;
+    background-color: dodgerblue;
+    /* border-color: rgb(170, 213, 252); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* --- CheckBox stylizing */
+
+
+
+
+/* Hidden state before appearing */
+#table-container.hidden thead, 
+#table-container.hidden tfoot { transform: translateX(150%); }
+
+#table-container.hidden tbody { transform: translateX(-150%); }
+
+/* Animated appearing */
+thead, tbody, tfoot { 
+    transform: translateX(0%);
+    transition: transform 1500ms;
+}
+
+#table-container thead { transition-delay: 0ms; }
+#table-container tbody { transition-delay: 600ms; }
+#table-container tfoot { transition-delay: 1200ms; }
+
+
+
+
+@media screen and (max-width: 1000px) {
+    th img {
+        display: none;
+    } 
+}
